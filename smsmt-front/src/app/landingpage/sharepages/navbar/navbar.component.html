@@ -1,0 +1,53 @@
+
+<header>
+  <nav class="navbar navbar-dark bg-dark navbar-expand-lg" aria-label="Global navigation - Standard example">
+    <div class="container-xxl">
+
+      <!-- Orange brand logo -->
+      <div class="navbar-brand me-auto me-lg-4">
+        <a class="stretched-link" routerLink="messages" (click)="messageLink()">
+          <img src="../../../assets/logo/orange-logo.svg" width="50" height="50" alt="Boosted - Back to Home" loading="lazy">
+        </a>
+      </div>
+
+      <!-- Burger menu (visible on small screens) -->
+      <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target=".global-header-1" aria-controls="global-header-1.1 global-header-1.2" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Navbar with links -->
+      <div id="global-header-1.1" class="navbar-collapse collapse me-lg-auto global-header-1">
+        <ul class="navbar-nav">
+
+          <li class="nav-item">
+            <a class="nav-link" routerLink="messages" (click)="messageLink()" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:true}">Messages</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="statistics" (click)="staticLink()" routerLinkActive="active-link">Statistics</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Sub-accounts
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark">
+              <li><a class="dropdown-item" routerLink="sub-account/create" (click)="createLink()" >Create</a></li>
+              <li><a class="dropdown-item" routerLink="sub-account/view" (click)="viewLink()">View</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- mon compte -->
+<div class="moncompte">
+  <app-my-accounts/>
+</div>
+
+
+
+
+
+
+

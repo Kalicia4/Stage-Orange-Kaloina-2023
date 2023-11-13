@@ -1,0 +1,27 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+body{
+  background-color: rgb(251, 255, 255);
+}
+.toast-success {
+  background-color: #4CAF50;
+  color: #fff;
+  margin: 2%;
+  padding: 5px;
+  width: 150px;
+  margin: 5%;
+  text-align: center;
+  padding: 2%;
+}
+.toast-error {
+  background-color: #e0081a;
+  color: #fff;
+  width: 150px;
+  margin: 5%;
+  text-align: center;
+  padding: 2%;
+}
+input{
+  font-weight: lighter;
+}

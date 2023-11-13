@@ -1,0 +1,45 @@
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+.titre{
+  font-weight: bold;
+  font-size: 2em;
+}
+input{
+  border-radius: 50px;
+}
+.card{
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+  width: 50%;
+  padding: 0%;
+}
+.show{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.show p {
+  margin-bottom: 0%;
+  margin-left: 2%;
+}
+.admin{
+  float: right;
+  font-size: 0.5em;
+}
+.admin:hover{
+  cursor: pointer;
+}
+.inscrire p {
+  margin: 0;
+}
+.inscrire{
+  display: flex;
+  margin-bottom: 3%;
+}
+.inscrire strong{
+  margin-left: 2%;
+}

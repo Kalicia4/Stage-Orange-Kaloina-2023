@@ -1,0 +1,7 @@
+.range{
+  display: flex;
+  flex-direction: row;
+}
+.range span{
+  margin-left: 10px;
+}

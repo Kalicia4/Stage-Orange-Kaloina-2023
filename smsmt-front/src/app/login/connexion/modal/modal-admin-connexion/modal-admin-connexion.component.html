@@ -1,0 +1,22 @@
+<h1 mat-dialog-title>Sign in</h1>
+<div mat-dialog-content class="formulaire">
+  <mat-form-field>
+    <mat-label>Admin login:</mat-label>
+    <input matInput [(ngModel)]="login">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Admin password:</mat-label>
+    <input matInput [(ngModel)]="pswd" [type]="hide ? 'password' : 'text'">
+  </mat-form-field>
+  <div class="view">
+    <input type="checkbox" (change)="hide = !hide;" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+    <div class="pswd">
+      <p>view password</p>
+    </div>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Close</button>
+  <button mat-button  cdkFocusInitial (click)="signIn()">Sign in</button>
+</div>
+

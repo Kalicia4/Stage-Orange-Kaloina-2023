@@ -1,0 +1,63 @@
+<div class="row justify-content-center container">
+  <div class="card">
+    <div class="card-header text-white bg-black titre">
+      Sign up
+    </div>
+    <div class="card-body">
+      <form  novalidate (ngSubmit)="Inscrire()" #formulaire = 'ngForm'>
+        <div class="row">
+          <div class="col-md-10 mb-3">
+            <label>Username</label>
+            <input type="text" class="form-control" placeholder="Username" name="utilisateur" [(ngModel)]="user.utilisateur"
+            required
+            #utilisateurVar = 'ngModel'
+            [ngClass]="{'is-invalid': utilisateurVar.touched && !utilisateurVar.valid}"
+            >
+            <div class="invalid-feedback">
+              <span *ngIf="utilisateurVar.errors">
+                enter your username
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-10 mb-3">
+            <label>Password</label>
+            <input [type]="hide ? 'password' : 'text'" class="form-control" placeholder="Password" name="motdepasse" [(ngModel)]="user.motdepasse"
+            required
+            #mdpVar = 'ngModel'
+            [ngClass]="{'is-invalid': mdpVar.touched && !mdpVar.valid}"
+            >
+            <div class="invalid-feedback">
+              <span *ngIf="mdpVar.errors?.['required']">
+                enter your password
+              </span>
+            </div>
+            <div class="viewpass">
+              <input type="checkbox" (change)="hide = !hide;" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <p>view password</p>
+            </div>
+          </div>
+
+        </div>
+        <div class="row">
+          <div class="col-md-10 mb-3">
+            <label>Confirm your password</label>
+            <input type="password" class="form-control" placeholder="Password" name="motdepasseconfirmer" [(ngModel)]="motdepasseconfirmer"
+            required
+            #mdpCVar = 'ngModel'
+            [ngClass]="{'is-invalid': mdpCVar.touched && !mdpCVar.valid}"
+            >
+          </div>
+        </div>
+        <div class="row">
+          <div class="mt-3 mb-5" >
+            <button class="btn btn-dark" type="submit" [disabled]="formulaire.invalid"> Sign up </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+

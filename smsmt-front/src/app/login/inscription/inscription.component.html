@@ -1,0 +1,80 @@
+<div class="container">
+  <div class="card">
+    <div class="card-header text-white bg-black titre">
+      Sign up
+    </div>
+    <div class="card-body">
+      <form  novalidate (ngSubmit)="onSubmit(inscriptionForm)" #inscriptionForm = 'ngForm'>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label>First name</label>
+            <input type="text" class="form-control" placeholder="First name" name="nom" [(ngModel)]="user.nom">
+          </div>
+          <div class="col-md-6 mb-3">
+            <label>Last name</label>
+            <input type="text" class="form-control" placeholder="Last name" name="prenom" [(ngModel)]="user.prenom">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label>Society name</label>
+            <input type="text" class="form-control" placeholder="Society name" name="nom_soc" [(ngModel)]="user.nom_soc"
+            required
+            #nom_socVar = 'ngModel'
+            [ngClass]="{'is-invalid': nom_socVar.touched && !nom_socVar.valid}"
+            >
+            <div class="invalid-feedback">
+              <span *ngIf="nom_socVar.errors">
+                Society name required
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label>Email</label>
+            <input type="text" class="form-control" placeholder="email" name="mail" [(ngModel)]="user.mail"
+            required
+            email
+            #mailVar = 'ngModel'
+            [ngClass]="{'is-invalid': mailVar.touched && (!mailVar.valid || !isValidEmail(user.mail))}"
+            >
+            <div class="invalid-feedback">
+              <span *ngIf="!isValidEmail(user.mail)">
+                Email invalid
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label>Phone</label>
+            <input type="text" class="form-control" placeholder="Phone" name="telephone" [(ngModel)]="user.telephone"
+            required
+            maxlength="10"
+            minlength="10"
+            pattern="(032|037)[0-9]{7}"
+            #telVar="ngModel"
+            [ngClass]="{'is-invalid': telVar.touched && (!telVar.valid || !isValidPhoneNumber(user.telephone))}"
+            >
+            <div class="invalid-feedback">
+              <span *ngIf="!isValidPhoneNumber(user.telephone)">
+                phone invalid
+              </span>
+            </div>
+          </div>
+
+          <div class="connecter">
+            <p>you already have an account?</p>
+            <strong><a href="/..">Sign in</a></strong>
+          </div>
+
+          <div class="mt-3 mb-5" >
+            <button class="btn btn-dark" type="submit" [disabled]="inscriptionForm.invalid"> Register </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+

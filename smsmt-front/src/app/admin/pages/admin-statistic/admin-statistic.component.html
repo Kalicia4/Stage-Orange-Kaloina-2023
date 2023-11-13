@@ -1,0 +1,88 @@
+
+<h1>Statistics</h1>
+
+<div class="range">
+  <h4>Select range</h4><span> *required</span>
+</div>
+<mat-form-field>
+  <mat-label>Enter a date range</mat-label>
+  <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+    <input matStartDate formControlName="start" placeholder="Start date" [(ngModel)]="startDate">
+    <input matEndDate formControlName="end" placeholder="End date" [(ngModel)]="endDate">
+  </mat-date-range-input>
+  <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-date-range-picker #picker></mat-date-range-picker>
+
+  <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+  <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+</mat-form-field>
+
+<p>Selected range: {{range.value | json}}</p>
+
+<br><br>
+
+<h5>Choose an operator</h5>
+<mat-radio-group aria-label="Select an option" (change)="radioChange($event)">
+  <mat-radio-button value="orange">Orange</mat-radio-button>
+  <mat-radio-button value="telma">Telma</mat-radio-button>
+  <mat-radio-button value="airtel">Airtel</mat-radio-button>
+</mat-radio-group>
+<br>
+
+<br><br>
+
+<div class="select row align-items-center">
+  <div class="s1 col-md-auto">
+    <form>
+      <h4>Pick an account</h4>
+      <mat-form-field>
+        <mat-label>select an account</mat-label>
+        <mat-select [(ngModel)]="selectedValue" name="compte">
+          <mat-option *ngFor="let compte of comptes" [value]="compte">
+            {{compte}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <p> Selected account: {{selectedValue}} </p>
+    </form>
+  </div>
+
+  <div class="button col-md-auto">
+    <button type="button" class="btn btn-light" (click)="getSubAccount()">get sub-account</button>
+  </div>
+
+  <div class="s2 col-md-auto">
+    <form>
+      <h4>Pick a sub account</h4>
+      <mat-form-field>
+        <mat-label>select a sub account</mat-label>
+        <mat-select [(ngModel)]="selected" name="souscompte" [disabled]="isDisabled">
+          <mat-option *ngFor="let souscompte of souscomptes" [value]="souscompte">
+            {{souscompte}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <p> Selected sub-account: {{selected}} </p>
+    </form>
+  </div>
+
+</div>
+
+<br>
+
+<div class="datebutton">
+  <button type="button" class="btn btn-light" (click)="getstat()">Validate</button>
+</div>
+
+<br>
+
+<div class="bar">
+  <highcharts-chart
+    *ngIf="charOptions"
+    [Highcharts]="highcharts"
+    [options]="charOptions"
+    style="height: 100%; width: 100%; display: block;"
+    class="container ">
+  </highcharts-chart>
+</div>

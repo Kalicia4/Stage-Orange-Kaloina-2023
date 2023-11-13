@@ -1,0 +1,23 @@
+<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">
+  my account
+</button>
+
+<div class="offcanvas offcanvas-start" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="staticBackdropLabel">My account</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Close"><span class="visually-hidden">Close</span></button>
+  </div>
+  <div class="offcanvas-body">
+    <div class="compte">
+      <label>Last name</label><br><h4>{{utilisateur.nom}}</h4>
+      <label>First name</label><br><h4>{{utilisateur.prenom}}</h4>
+      <label>User name</label><br><p>{{utilisateur.utilisateur}}</p>
+      <label>Company name</label> <br><p>{{utilisateur.nom_soc}}</p>
+      <label>e-mail</label><br><p>{{utilisateur.mail}}</p>
+      <label>Phone</label><br><p>{{utilisateur.telephone}}</p>
+    </div>
+    <div class="bas">
+      <button type="button" class="btn btn-dark deco" (click)="deconnexion()">Disconnect</button>
+    </div>
+  </div>
+</div>

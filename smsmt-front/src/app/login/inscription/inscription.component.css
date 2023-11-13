@@ -1,0 +1,23 @@
+.titre{
+  font-weight: bold;
+  font-size: 2em;
+}
+input{
+  border-radius: 50px;
+}
+.card{
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+}
+.container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2%;
+}
+.connecter{
+  display: flex;
+
+}
+.connecter strong{
+  margin-left: 2%;
+}

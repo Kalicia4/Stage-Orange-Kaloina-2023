@@ -1,0 +1,63 @@
+
+<div class="container">
+  <div class="card">
+    <div class="card-header text-white bg-black titre">
+      Sign in
+      <p><a class="link-offset-3 admin" (click)="openDialog()">sign in as admin</a></p>
+
+    </div>
+    <div class="card-body">
+      <form novalidate (ngSubmit)="seConnecter()">
+
+        <div class="row">
+          <div class="col-md-10 mb-3">
+            <label>Username</label>
+            <input type="tel" class="form-control" id="utilisateur" name="utilisateur" [(ngModel)]="user.utilisateur" placeholder="Username"
+            required
+            #telVar = 'ngModel'
+            [ngClass]="{'is-invalid': telVar.touched && !telVar.valid}"
+            >
+            <div class="invalid-feedback">
+              <span *ngIf="mdpVar.errors?.['required']">
+                enter your username
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-10 mb-3">
+            <label>Password</label>
+            <br>
+            <input type="motdepasse" class="form-control" placeholder="password" name="motdepasse"  [type]="hide ? 'password' : 'text'" [(ngModel)]="user.motdepasse"
+            required
+            #mdpVar = 'ngModel'
+            [ngClass]="{'is-invalid': mdpVar.touched && !mdpVar.valid}"
+            >
+            <div class="invalid-feedback">
+              <span *ngIf="mdpVar.errors?.['required']">
+                entrez your password
+              </span>
+            </div>
+
+            <div class="check show">
+              <input type="checkbox" (change)="hide = !hide;" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <p>view password</p>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="inscrire">
+          <p>you don't have an account?</p>
+          <strong><a href="/enregistrer">Sign up</a></strong>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Sign in</button>
+      </form>
+    </div>
+
+  </div>
+</div>
+
+

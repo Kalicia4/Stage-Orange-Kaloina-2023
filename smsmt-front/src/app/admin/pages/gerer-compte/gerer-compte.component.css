@@ -1,0 +1,27 @@
+table {
+  width: 100%;
+}
+
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td, th {
+  width: 25%;
+}
+.modify{
+  border: none;
+   border-radius: 25px;
+}
+.delete{
+  background: none;
+  color: rgb(206, 0, 0);
+  border: none;
+  border-radius: 25px;
+}
+
+.delete:hover{
+  background-color: rgb(206, 0, 0);
+  color: white;
+}

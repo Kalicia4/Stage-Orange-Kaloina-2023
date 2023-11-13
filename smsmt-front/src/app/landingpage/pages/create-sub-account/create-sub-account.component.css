@@ -1,0 +1,19 @@
+
+.check{
+  display: flex;
+  align-items: center;
+}
+.check span{
+  margin-left: 3px;
+}
+/* .container{
+  display: flex;
+  justify-content: center;
+} */
+
+.carte{
+  padding-top: 3%;
+}
+.sousCompte{
+  margin-bottom: 5%;
+}

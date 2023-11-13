@@ -1,0 +1,27 @@
+.titre{
+  font-weight: bold;
+  font-size: 2em;
+}
+input{
+  border-radius: 50px;
+}
+.card{
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+  width: 50%;
+  padding: 0%;
+}
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+.viewpass{
+  display: flex;
+}
+.viewpass p {
+  margin: 0%;
+  margin-left: 2%;
+  font-size: 90%;
+}

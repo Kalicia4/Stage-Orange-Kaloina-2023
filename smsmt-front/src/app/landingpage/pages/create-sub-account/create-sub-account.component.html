@@ -1,0 +1,55 @@
+
+<div class="container sousCompte">
+  <mat-card class="col-md-8 carte">
+    <mat-card-content>
+      <form (ngSubmit)="Valider()" novalidate #formulaire='ngForm'>
+         <!-- <div class="col-md-5"> -->
+          <div class="mb-3">
+            <label for="login" class="form-label">Login</label>
+            <input type="email" class="form-control" id="login" [(ngModel)]="sousCompte.login" name="login" required>
+          </div>
+          <div class="mb-3">
+            <label for="mdp" class="form-label">Password</label>
+            <input type="email" class="form-control" id="mdp" matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="sousCompte.mdp" name="mdp" required>
+            <div class="check">
+              <input type="checkbox" (change)="hide = !hide;" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide"><span>show</span>
+            </div>
+
+
+          </div>
+          <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="email" class="form-control" id="name" [(ngModel)]="sousCompte.nom" name="nom" required>
+          </div>
+          <div class="mb-3">
+            <label for="phone" class="form-label">Phone number</label>
+            <input type="text" class="form-control" id="phone" [(ngModel)]="sousCompte.tel" name="tel"
+                   required
+                   maxlength="10"
+                   minlength="10"
+                   pattern="(032|037)[0-9]{7}"
+                   #telVar="ngModel"
+                   [ngClass]="{'is-invalid': telVar.touched && (!telVar.valid || !isValidPhoneNumber(sousCompte.tel))}"
+            >
+            <div class="invalid-feedback">
+                <span *ngIf="telVar.touched && !telVar.valid">Invalid number</span>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <button type="submit" class="btn btn-primary btn-sm" [disabled]="formulaire.invalid">
+              Create
+            </button>
+          </div>
+        <!-- </div> -->
+      </form>
+
+
+    </mat-card-content>
+  </mat-card>
+
+</div>
+
+
+
+

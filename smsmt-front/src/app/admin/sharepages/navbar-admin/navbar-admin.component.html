@@ -1,0 +1,57 @@
+<div class="admin">
+  <header class="sticky-top">
+    <nav class="navbar sticky-top navbar-dark bg-dark navbar-expand-lg" aria-label="Global navigation - Standard example">
+      <div class="container-xxl">
+        <!-- Orange brand logo -->
+        <div class="navbar-brand me-auto me-lg-4">
+          <a class="stretched-link" routerLink="/admin">
+            <img src="../../../assets/logo/orange-logo.svg" width="50" height="50" alt="Boosted - Back to Home" loading="lazy">
+          </a>
+        </div>
+
+        <!-- Burger menu (visible on small screens) -->
+        <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target=".global-header-1" aria-controls="global-header-1.1 global-header-1.2" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navbar with links -->
+        <div id="global-header-1.1" class="navbar-collapse collapse me-lg-auto global-header-1">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="admin#managing">Manage accounts</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link"  href="admin#messages">SMS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="admin#statistics">Statistics</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <body class="adminBody">
+    <br>
+    <div class="disconnect container" id="top">
+      <button type="button" class="btn btn-dark" (click)="deconnecter()">Disconnect</button>
+    </div>
+    <br> <br>
+
+    <div class="container">
+      <section id="managing">
+        <app-gerer-compte></app-gerer-compte>
+      </section>
+      <br><br>
+      <section id="messages">
+        <app-voir></app-voir>
+      </section>
+      <br><br>
+      <section id="statistics">
+        <app-admin-statistic></app-admin-statistic>
+      </section>
+    </div>
+  </body>
+</div>
+

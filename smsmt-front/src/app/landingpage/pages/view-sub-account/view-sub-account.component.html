@@ -1,0 +1,124 @@
+<div class="container">
+  <div class="t1">
+    <h2>Sub-accounts</h2>
+  </div>
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+
+      <!-- Login Column -->
+      <ng-container matColumnDef="login">
+        <th mat-header-cell *matHeaderCellDef> Login</th>
+        <td mat-cell *matCellDef="let element"> {{element.login}} </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="nom">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.nom}} </td>
+      </ng-container>
+
+      <!-- Phone Column -->
+      <ng-container matColumnDef="tel">
+        <th mat-header-cell *matHeaderCellDef> Phone number </th>
+        <td mat-cell *matCellDef="let element"> {{element.tel}} </td>
+      </ng-container>
+
+      <!-- Action Column -->
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef> Action </th>
+        <td mat-cell *matCellDef="let element">
+
+          <!-- edit -->
+          <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="edit(element.id,element.login,element.nom,element.tel,element.mdp)">
+            <i class="fa-regular fa-pen-to-square"></i>
+            <span class="visually-hidden">edit</span>
+          </button>
+
+          <!-- delete -->
+          <button type="button" class="btn" style="margin-left: 5px;" data-bs-toggle="modal" data-bs-target="#deletedialog" (click)="getId(element.id, element.login)">
+            <i class="fa-solid fa-trash"></i>
+            <span class="visually-hidden">delete</span>
+          </button>
+        </td>
+      </ng-container>
+
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                   showFirstLastButtons
+                   aria-label="Select page of periodic elements">
+    </mat-paginator>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title h5" id="exampleModalLabel">Update sub-account</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Close"><span class="visually-hidden">Close</span></button>
+      </div>
+      <div class="modal-body">
+
+        <!-- FORMULAIRE  -->
+        <form  novalidate #formulaire='ngForm'>
+          <!-- <div class="col-md-5"> -->
+            <div class="mb-3">
+              <label for="login" class="form-label">Login</label>
+              <input type="email" class="form-control" [(ngModel)]="sousCompteUpdate.login" id="login" name="login">
+            </div>
+            <div class="mb-3">
+             <label for="mdp" class="form-label">Password</label>
+             <input type="email" class="form-control" [(ngModel)]="sousCompteUpdate.mdp" id="mdp" matInput [type]="hide ? 'password' : 'text'" name="mdp">
+             <div class="check">
+               <input type="checkbox" (change)="hide = !hide;" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide"><span>show</span>
+             </div>
+            </div>
+            <div class="mb-3">
+             <label for="name" class="form-label">Name</label>
+             <input type="email" class="form-control" [(ngModel)]="sousCompteUpdate.nom"  id="name"  name="nom">
+            </div>
+            <div class="mb-3">
+             <label for="phone" class="form-label">Phone number</label>
+             <input type="email" class="form-control" [(ngModel)]="sousCompteUpdate.tel"  id="phone" name="tel" disabled>
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary" (click)="saveEdit()">Save changes</button>
+            </div>
+         <!-- </div> -->
+        </form>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Delete Modal  -->
+<div class="modal fade" id="deletedialog" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Delete <strong>{{loginSub}}</strong></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Close"><span class="visually-hidden">Close</span></button>
+        </div>
+        <div class="modal-body">
+          <p>Would you like to delete this account?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+          <button type="button" class="btn btn-primary" (click)=" deleteCompte()" data-bs-dismiss="modal">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

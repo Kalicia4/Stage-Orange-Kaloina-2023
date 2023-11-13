@@ -1,0 +1,84 @@
+<div class="container date">
+  <div class="title">
+    <h3>Choose dates</h3>
+  </div>
+
+  <div class="dateForm">
+    <mat-form-field>
+      <mat-label>Start</mat-label>
+      <input matInput [matDatepicker]="picker1"  [(ngModel)]="startDate">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>
+
+
+    <mat-form-field >
+      <mat-label>End</mat-label>
+      <input matInput [matDatepicker]="picker2" [(ngModel)]="endDate">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-datepicker #picker2 ></mat-datepicker>
+    </mat-form-field>
+
+    <div class="datebutton">
+      <button type="button" class="btn btn-light" (click)="getValueOfDates()">Validate</button>
+    </div>
+
+  </div>
+
+</div>
+
+<highcharts-chart
+*ngIf="chartOptions"
+[Highcharts]="highcharts"
+[options]="chartOptions"
+style="height: 100%; width: 100%; display: block;"
+class="container statParPeriode">
+
+</highcharts-chart>
+
+<div class="container sousCompte">
+  <div class="title">
+    <h3>Pick your sub-accounts</h3>
+  </div>
+
+  <form>
+    <mat-form-field class="example-chip-list">
+      <mat-label>Sub-accounts</mat-label>
+      <mat-chip-grid #chipGrid aria-label="Fruit selection">
+        <mat-chip-row *ngFor="let subAccount of accounts" (removed)="remove(subAccount)">
+          {{subAccount}}
+          <button matChipRemove [attr.aria-label]="'remove ' + subAccount">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </mat-chip-row>
+      </mat-chip-grid>
+      <input type="button" value="click here" placeholder="Sub-accounts..." #fruitInput [formControl]="subAccountCtrl"
+        [matChipInputFor]="chipGrid" [matAutocomplete]="auto"
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+        (matChipInputTokenEnd)="add($event)"/>
+      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+        <mat-option *ngFor="let subAccount of filteredAccount | async" [value]="subAccount">
+          {{subAccount}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>
+
+  <div class="sousComptebutton">
+    <button type="button" class="btn btn-light" (click)="getAccounts()">Validate</button>
+  </div>
+
+</div>
+
+<highcharts-chart
+  *ngIf="chartOpt"
+  [Highcharts]="highcharts"
+  [options]="chartOpt"
+  style="height: 100%; width: 100%; display: block;"
+  class="container statsouscompte">
+
+</highcharts-chart>
+
+

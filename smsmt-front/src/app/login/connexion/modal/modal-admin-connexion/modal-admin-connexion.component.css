@@ -1,0 +1,14 @@
+.formulaire{
+  display: flex;
+  flex-direction: column;
+}
+.view{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.pswd p{
+  width: 100%;
+  margin: 0;
+  margin-left: 5%;
+}
